@@ -101,7 +101,7 @@ function Contact() {
                 </button>
               </form>
             )}
-          </div>
+          </Reveal>
         </div>
       </section>
     </SiteLayout>
