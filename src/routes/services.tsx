@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { Building2, Users, CalendarRange, LineChart, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
@@ -107,19 +108,19 @@ function Services() {
           className={`py-24 ${i % 2 === 0 ? "bg-white" : "bg-cream"} scroll-mt-32`}
         >
           <div className="container-x grid gap-14 md:grid-cols-5 items-start">
-            <div className="md:col-span-2">
+            <Reveal variant="left" className="md:col-span-2 block">
               <p className="eyebrow">0{i + 1} / 04</p>
               <p.icon className="text-gold mt-6" size={48} strokeWidth={1.2} />
               <h2 className="mt-6 font-serif text-4xl text-navy">{p.title}</h2>
               <span className="gold-rule mt-4" />
               <p className="mt-5 text-muted-foreground leading-relaxed">{p.intro}</p>
-            </div>
+            </Reveal>
             <ul className="md:col-span-3 grid sm:grid-cols-2 gap-3">
-              {p.items.map((it) => (
-                <li key={it} className="flex items-start gap-3 bg-white p-5 border border-border">
+              {p.items.map((it, idx) => (
+                <Reveal as="li" key={it} variant="up" delay={idx * 60} className="flex items-start gap-3 bg-white p-5 border border-border">
                   <span className="mt-1 h-2 w-2 shrink-0 bg-gold rounded-full" />
                   <span className="text-navy text-sm font-medium">{it}</span>
-                </li>
+                </Reveal>
               ))}
             </ul>
           </div>
