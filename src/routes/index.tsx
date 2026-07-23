@@ -101,21 +101,23 @@ function Home() {
       {/* SERVICES */}
       <section className="py-24 md:py-32 bg-cream">
         <div className="container-x">
-          <div className="text-center max-w-2xl mx-auto">
+          <Reveal className="text-center max-w-2xl mx-auto block">
             <p className="eyebrow">Our Services</p>
             <h2 className="mt-4 text-4xl md:text-5xl text-navy">Four pillars, one integrated partner.</h2>
             <span className="gold-rule mt-6" />
-          </div>
+          </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {services.map((s) => (
-              <Link key={s.title} to={s.to} className="group bg-white p-8 border border-border hover:border-gold transition-all hover:-translate-y-1 duration-300">
-                <s.icon className="text-gold" size={36} strokeWidth={1.2} />
-                <h3 className="mt-6 font-serif text-2xl text-navy">{s.title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold">
-                  Learn more <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
+            {services.map((s, idx) => (
+              <Reveal key={s.title} variant="up" delay={idx * 120}>
+                <Link to={s.to} className="group bg-white p-8 border border-border hover:border-gold transition-all hover:-translate-y-1 duration-300 block h-full">
+                  <s.icon className="text-gold" size={36} strokeWidth={1.2} />
+                  <h3 className="mt-6 font-serif text-2xl text-navy">{s.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gold font-semibold">
+                    Learn more <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -124,7 +126,7 @@ function Home() {
       {/* WHY */}
       <section className="py-24 md:py-32 bg-navy text-white">
         <div className="container-x grid gap-16 md:grid-cols-2 items-center">
-          <div>
+          <Reveal variant="left">
             <p className="eyebrow">Why HK Provision</p>
             <h2 className="mt-4 text-4xl md:text-5xl">Excellence, delivered end-to-end.</h2>
             <span className="gold-rule mt-6" />
@@ -133,21 +135,21 @@ function Home() {
               high-quality hospitality products — we align every detail with your
               brand standards and business objectives.
             </p>
-          </div>
+          </Reveal>
           <ul className="space-y-5">
             {[
               { t: "Premium Products", d: "Curated FF&E and OS&E from a trusted global supplier network." },
               { t: "Expert Advice", d: "International operators and hoteliers with GCC market fluency." },
               { t: "Trusted Partnership", d: "Transparent process from concept to opening and beyond." },
               { t: "Sustainable Value", d: "Solutions that protect owner interests and grow long-term profitability." },
-            ].map((i) => (
-              <li key={i.t} className="flex gap-4 border-b border-white/10 pb-5">
+            ].map((i, idx) => (
+              <Reveal as="li" key={i.t} variant="right" delay={idx * 120} className="flex gap-4 border-b border-white/10 pb-5">
                 <CheckCircle2 className="text-gold shrink-0" size={22} />
                 <div>
                   <h4 className="font-serif text-xl text-white">{i.t}</h4>
                   <p className="text-sm text-white/60 mt-1">{i.d}</p>
                 </div>
-              </li>
+              </Reveal>
             ))}
           </ul>
         </div>
