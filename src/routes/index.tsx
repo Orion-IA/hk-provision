@@ -158,7 +158,7 @@ function Home() {
       {/* CTA CONTACT */}
       <section className="py-24 md:py-28 bg-white">
         <div className="container-x">
-          <div className="border border-border p-10 md:p-16 bg-cream/50 grid md:grid-cols-3 gap-10 items-center">
+          <Reveal variant="zoom" className="border border-border p-10 md:p-16 bg-cream/50 grid md:grid-cols-3 gap-10 items-center block">
             <div className="md:col-span-2">
               <p className="eyebrow">Let's talk</p>
               <h2 className="mt-3 text-3xl md:text-4xl text-navy">Ready to elevate your property?</h2>
@@ -175,7 +175,7 @@ function Home() {
             <div className="flex md:justify-end">
               <Link to="/contact" className="btn-gold">Get in touch <ArrowRight size={16} /></Link>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
     </SiteLayout>
