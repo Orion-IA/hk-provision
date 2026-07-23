@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
+import { Reveal } from "@/components/site/Reveal";
 import hero from "@/assets/riyadh-hero.jpg.asset.json";
 import lobby from "@/assets/lobby.jpg.asset.json";
 import { Building2, Users, CalendarRange, LineChart, ArrowRight, CheckCircle2, MapPin, Phone, Mail } from "lucide-react";
@@ -33,7 +34,7 @@ function Home() {
         <img
           src={hero.url}
           alt="Riyadh skyline at dusk"
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover animate-hero-ken"
           width={1920}
           height={1080}
         />
@@ -41,20 +42,20 @@ function Home() {
         <div className="absolute inset-y-0 left-0 w-1 bg-gold hidden md:block" />
 
         <div className="container-x relative py-24 text-white">
-          <p className="eyebrow">Riyadh · Saudi Arabia</p>
-          <h1 className="mt-6 font-serif text-5xl md:text-7xl leading-[1.05] max-w-4xl">
+          <p className="eyebrow animate-float-up" style={{ animationDelay: "100ms" }}>Riyadh · Saudi Arabia</p>
+          <h1 className="mt-6 font-serif text-5xl md:text-7xl leading-[1.05] max-w-4xl animate-float-up" style={{ animationDelay: "250ms" }}>
             Hospitality Solutions. <span className="text-gold italic">Delivered.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-white/80 leading-relaxed">
+          <p className="mt-6 max-w-xl text-lg text-white/80 leading-relaxed animate-float-up" style={{ animationDelay: "450ms" }}>
             Premium products and professional services for hotels, restaurants, resorts
             and hospitality investors — from concept to execution.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          <div className="mt-10 flex flex-wrap gap-4 animate-float-up" style={{ animationDelay: "650ms" }}>
             <Link to="/services" className="btn-gold">Our Services <ArrowRight size={16} /></Link>
             <Link to="/contact" className="btn-outline-light">Contact Us</Link>
           </div>
 
-          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl border-t border-white/15 pt-8">
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl border-t border-white/15 pt-8 animate-float-up" style={{ animationDelay: "850ms" }}>
             {["Hotel Supply", "Consultancy", "Events", "Asset Management"].map((p) => (
               <div key={p} className="text-xs md:text-sm uppercase tracking-[0.2em] text-white/70 font-medium">
                 <span className="text-gold mr-2">●</span>{p}
