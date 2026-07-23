@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { Mail, Phone, MapPin, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 
@@ -26,19 +27,19 @@ function Contact() {
       <section className="py-24 bg-white">
         <div className="container-x grid gap-14 lg:grid-cols-5">
           <div className="lg:col-span-2 space-y-8">
-            <div>
+            <Reveal variant="left">
               <p className="eyebrow">Get in touch</p>
               <h2 className="mt-4 font-serif text-3xl text-navy">Reach the HK Provision team</h2>
               <span className="gold-rule mt-4" />
-            </div>
+            </Reveal>
 
             {[
               { icon: MapPin, label: "Location", value: "Riyadh, Saudi Arabia", href: null },
               { icon: Phone, label: "Phone", value: "+966 567 567 063", href: "tel:+966567567063" },
               { icon: MessageCircle, label: "WhatsApp", value: "+966 567 567 063", href: "https://wa.me/966567567063" },
               { icon: Mail, label: "Email", value: "info@hkprovision.com", href: "mailto:info@hkprovision.com" },
-            ].map((c) => (
-              <div key={c.label} className="flex gap-5 items-start border-b border-border pb-6">
+            ].map((c, idx) => (
+              <Reveal key={c.label} variant="left" delay={idx * 100} className="flex gap-5 items-start border-b border-border pb-6">
                 <div className="p-3 bg-cream">
                   <c.icon className="text-gold" size={22} />
                 </div>
@@ -50,11 +51,11 @@ function Contact() {
                     <p className="mt-1 text-lg text-navy font-medium">{c.value}</p>
                   )}
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
 
-          <div className="lg:col-span-3 bg-cream p-10">
+          <Reveal variant="right" delay={100} className="lg:col-span-3 bg-cream p-10 block">
             {sent ? (
               <div className="text-center py-16">
                 <div className="mx-auto w-14 h-14 bg-gold flex items-center justify-center rounded-full">

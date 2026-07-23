@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/projects")({
@@ -23,7 +24,7 @@ function Projects() {
 
       <section className="py-32 bg-white">
         <div className="container-x">
-          <div className="max-w-2xl mx-auto text-center border border-border p-14 bg-cream/50">
+          <Reveal variant="zoom" className="max-w-2xl mx-auto text-center border border-border p-14 bg-cream/50 block">
             <p className="eyebrow">Coming Soon</p>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl text-navy">
               Our portfolio is being crafted.
@@ -37,7 +38,7 @@ function Projects() {
             <Link to="/contact" className="mt-8 inline-flex btn-gold">
               Get in touch <ArrowRight size={16} />
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
     </SiteLayout>
