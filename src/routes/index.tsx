@@ -68,7 +68,7 @@ function Home() {
       {/* INTRO */}
       <section className="py-24 md:py-32 bg-white">
         <div className="container-x grid gap-16 md:grid-cols-2 items-center">
-          <div>
+          <Reveal variant="left">
             <p className="eyebrow">About HK Provision</p>
             <h2 className="mt-4 text-4xl md:text-5xl text-navy">
               A trusted hospitality partner from concept to execution.
@@ -87,14 +87,14 @@ function Home() {
             <Link to="/about" className="mt-8 inline-flex items-center gap-2 text-navy font-medium border-b-2 border-gold pb-1 hover:text-gold transition-colors">
               Discover our story <ArrowRight size={16} />
             </Link>
-          </div>
-          <div className="relative">
+          </Reveal>
+          <Reveal variant="right" delay={150} className="relative">
             <img src={lobby.url} alt="Luxury hotel lobby" className="w-full h-[520px] object-cover rounded-sm" width={1600} height={1200} loading="lazy" />
             <div className="absolute -bottom-6 -left-6 bg-gold text-navy p-6 max-w-[220px] hidden md:block">
               <p className="font-serif text-3xl leading-none">GCC</p>
               <p className="mt-2 text-xs uppercase tracking-widest font-semibold">Regional reach & network</p>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
