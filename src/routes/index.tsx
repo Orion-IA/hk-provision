@@ -155,6 +155,109 @@ function Home() {
         </div>
       </section>
 
+      {/* STATS */}
+      <section className="py-20 bg-white border-y border-border">
+        <div className="container-x grid grid-cols-2 md:grid-cols-4 gap-10">
+          {[
+            { k: "20+", l: "Years of combined expertise" },
+            { k: "150+", l: "Trusted global suppliers" },
+            { k: "40+", l: "Hospitality projects delivered" },
+            { k: "6", l: "GCC markets served" },
+          ].map((s, idx) => (
+            <Reveal key={s.l} variant="up" delay={idx * 120} className="text-center block">
+              <p className="font-serif text-5xl md:text-6xl text-navy">{s.k}</p>
+              <span className="gold-rule mt-4" />
+              <p className="mt-3 text-xs md:text-sm uppercase tracking-[0.2em] text-muted-foreground">{s.l}</p>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="py-24 md:py-32 bg-cream">
+        <div className="container-x">
+          <Reveal className="text-center max-w-2xl mx-auto block">
+            <p className="eyebrow">Our Approach</p>
+            <h2 className="mt-4 text-4xl md:text-5xl text-navy">A disciplined path from vision to delivery.</h2>
+            <span className="gold-rule mt-6" />
+            <p className="mt-6 text-muted-foreground leading-relaxed">
+              Every engagement follows a proven four-step methodology designed to align execution with your standards, timeline and returns.
+            </p>
+          </Reveal>
+          <div className="mt-16 grid gap-6 md:grid-cols-4">
+            {[
+              { icon: Compass, step: "01", title: "Discover", desc: "Deep dive into brand, positioning and operational objectives." },
+              { icon: ClipboardList, step: "02", title: "Design", desc: "Tailored scope, sourcing plan and specifications aligned with budget." },
+              { icon: Handshake, step: "03", title: "Deliver", desc: "Coordinated execution with trusted partners and transparent reporting." },
+              { icon: Sparkles, step: "04", title: "Elevate", desc: "Continuous improvement, training and asset performance follow-up." },
+            ].map((s, idx) => (
+              <Reveal key={s.title} variant="up" delay={idx * 130}>
+                <div className="relative bg-white p-8 border border-border h-full hover:border-gold transition-colors duration-300">
+                  <span className="absolute top-6 right-6 font-serif text-4xl text-gold/40">{s.step}</span>
+                  <s.icon className="text-gold" size={34} strokeWidth={1.2} />
+                  <h3 className="mt-6 font-serif text-2xl text-navy">{s.title}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="py-24 md:py-32 bg-white">
+        <div className="container-x">
+          <Reveal className="text-center max-w-2xl mx-auto block">
+            <p className="eyebrow">Client Voices</p>
+            <h2 className="mt-4 text-4xl md:text-5xl text-navy">Trusted by hospitality leaders.</h2>
+            <span className="gold-rule mt-6" />
+          </Reveal>
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {[
+              { q: "HK Provision transformed our pre-opening — from sourcing to SOPs, every detail was handled with precision.", a: "General Manager", r: "5-star resort, Riyadh" },
+              { q: "A rare combination of international standards and deep GCC market fluency. A truly reliable partner.", a: "Hospitality Investor", r: "Jeddah" },
+              { q: "Their event execution for our launch was flawless. Elegant, on brand, and delivered on time.", a: "Marketing Director", r: "Luxury hotel group" },
+            ].map((t, idx) => (
+              <Reveal key={t.a} variant="up" delay={idx * 140}>
+                <figure className="bg-cream p-8 h-full border-l-2 border-gold">
+                  <Quote className="text-gold" size={28} strokeWidth={1.2} />
+                  <blockquote className="mt-5 text-navy font-serif text-xl leading-snug">"{t.q}"</blockquote>
+                  <figcaption className="mt-6 pt-5 border-t border-border">
+                    <p className="text-navy font-semibold text-sm">{t.a}</p>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{t.r}</p>
+                  </figcaption>
+                </figure>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* REACH */}
+      <section className="py-24 bg-navy text-white overflow-hidden">
+        <div className="container-x grid gap-14 md:grid-cols-2 items-center">
+          <Reveal variant="left">
+            <p className="eyebrow">Regional Reach</p>
+            <h2 className="mt-4 text-4xl md:text-5xl">Rooted in Riyadh. Active across the GCC.</h2>
+            <span className="gold-rule mt-6" />
+            <p className="mt-6 text-white/70 leading-relaxed">
+              From flagship hotels in the Kingdom to resorts and mixed-use developments across the Gulf,
+              we bring an international supplier network and hands-on local expertise to every project.
+            </p>
+          </Reveal>
+          <Reveal variant="right" delay={150}>
+            <div className="grid grid-cols-2 gap-4">
+              {["Saudi Arabia", "United Arab Emirates", "Qatar", "Bahrain", "Kuwait", "Oman"].map((c) => (
+                <div key={c} className="flex items-center gap-3 border border-white/15 px-5 py-4 hover:border-gold transition-colors">
+                  <Globe2 className="text-gold shrink-0" size={18} />
+                  <span className="text-sm tracking-wide">{c}</span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* CTA CONTACT */}
       <section className="py-24 md:py-28 bg-white">
         <div className="container-x">
