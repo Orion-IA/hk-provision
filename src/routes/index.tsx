@@ -3,7 +3,7 @@ import { SiteLayout } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
 import hero from "@/assets/riyadh-hero.jpg.asset.json";
 import lobby from "@/assets/lobby.jpg.asset.json";
-import { Building2, Users, CalendarRange, LineChart, ArrowRight, CheckCircle2, MapPin, Phone, Mail } from "lucide-react";
+import { Building2, Users, CalendarRange, LineChart, ArrowRight, CheckCircle2, MapPin, Phone, Mail, Compass, ClipboardList, Handshake, Sparkles, Quote, Globe2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
