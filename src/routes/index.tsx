@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
-import hero from "@/assets/riyadh-hero.jpg.asset.json";
-import lobby from "@/assets/lobby.jpg.asset.json";
+import hero from "@/assets/img/riyadh-hero.jpg";
+import lobby from "@/assets/img/lobby.jpg";
 import { Building2, Users, CalendarRange, LineChart, ArrowRight, CheckCircle2, MapPin, Phone, Mail, Compass, ClipboardList, Handshake, Sparkles, Quote, Globe2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -12,8 +12,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Premium hotel supply, hospitality consultancy, events and asset management from Riyadh, serving the Kingdom and the GCC." },
       { property: "og:title", content: "HK Provision — Hospitality Solutions. Delivered." },
       { property: "og:description", content: "Trusted hospitality partner from concept to execution — supply, consultancy, events and asset management." },
-      { property: "og:image", content: `https://id-preview--a2fd2b8d-9922-41c1-8636-9da30c25d595.lovable.app${hero.url}` },
-      { name: "twitter:image", content: `https://id-preview--a2fd2b8d-9922-41c1-8636-9da30c25d595.lovable.app${hero.url}` },
+      { property: "og:image", content: hero },
+      { name: "twitter:image", content: hero },
     ],
   }),
   component: Home,
@@ -32,7 +32,7 @@ function Home() {
       {/* HERO */}
       <section className="relative min-h-[92vh] flex items-center overflow-hidden">
         <img
-          src={hero.url}
+          src={hero}
           alt="Riyadh skyline at dusk"
           className="absolute inset-0 h-full w-full object-cover animate-hero-ken"
           width={1920}
@@ -89,7 +89,7 @@ function Home() {
             </Link>
           </Reveal>
           <Reveal variant="right" delay={150} className="relative">
-            <img src={lobby.url} alt="Luxury hotel lobby" className="w-full h-[520px] object-cover rounded-sm" width={1600} height={1200} loading="lazy" />
+            <img src={lobby} alt="Luxury hotel lobby" className="w-full h-[520px] object-cover rounded-sm" width={1600} height={1200} loading="lazy" />
             <div className="absolute -bottom-6 -left-6 bg-gold text-navy p-6 max-w-[220px] hidden md:block">
               <p className="font-serif text-3xl leading-none">GCC</p>
               <p className="mt-2 text-xs uppercase tracking-widest font-semibold">Regional reach & network</p>
