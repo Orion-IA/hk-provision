@@ -8,7 +8,7 @@ export function Footer() {
       <div className="container-x py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="bg-white inline-block rounded-sm p-3">
-            <img src={logo.url} alt="HK Provision" className="h-14 w-auto" />
+            <img src={logo} alt="HK Provision" className="h-14 w-auto" />
           </div>
           <p className="mt-5 max-w-md text-sm leading-relaxed">
             Saudi-based hospitality solutions company delivering premium products and
