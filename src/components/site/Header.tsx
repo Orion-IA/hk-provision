@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import logo from "@/assets/hk-logo.jpg.asset.json";
+import logo from "@/assets/img/hk-logo.jpg";
 import { Menu, X } from "lucide-react";
 
 const nav = [
@@ -17,7 +17,7 @@ export function Header() {
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-border">
       <div className="container-x flex items-center justify-between py-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo.url} alt="HK Provision" className="h-12 w-auto" />
+          <img src={logo} alt="HK Provision" className="h-12 w-auto" />
         </Link>
         <nav className="hidden md:flex items-center gap-9">
           {nav.map((n) => (

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import lobby from "@/assets/lobby.jpg.asset.json";
+import lobby from "@/assets/img/lobby.jpg";
 import { Award, Handshake, Sparkles, ShieldCheck, Users2, Heart } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
@@ -60,7 +60,7 @@ function About() {
             </div>
           </Reveal>
           <Reveal variant="right" delay={150}>
-            <img src={lobby.url} alt="Hospitality" className="w-full h-[560px] object-cover rounded-sm" width={1600} height={1200} loading="lazy" />
+            <img src={lobby} alt="Hospitality" className="w-full h-[560px] object-cover rounded-sm" width={1600} height={1200} loading="lazy" />
           </Reveal>
         </div>
       </section>
