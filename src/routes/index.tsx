@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { Reveal } from "@/components/site/Reveal";
-import hero from "@/assets/img/riyadh-hero.jpg";
-import lobby from "@/assets/img/lobby.jpg";
+import hero from "@/assets/img/riyadh-hero.jpg?inline";
+import lobby from "@/assets/img/lobby.jpg?inline";
 import { Building2, Users, CalendarRange, LineChart, ArrowRight, CheckCircle2, MapPin, Phone, Mail, Compass, ClipboardList, Handshake, Sparkles, Quote, Globe2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -12,8 +12,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Premium hotel supply, hospitality consultancy, events and asset management from Riyadh, serving the Kingdom and the GCC." },
       { property: "og:title", content: "HK Provision — Hospitality Solutions. Delivered." },
       { property: "og:description", content: "Trusted hospitality partner from concept to execution — supply, consultancy, events and asset management." },
-      { property: "og:image", content: hero },
-      { name: "twitter:image", content: hero },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,

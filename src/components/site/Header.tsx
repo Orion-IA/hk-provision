@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import logo from "@/assets/img/hk-logo.jpg";
+import logo from "@/assets/img/hk-logo.jpg?inline";
 import { Menu, X } from "lucide-react";
 
 const nav = [

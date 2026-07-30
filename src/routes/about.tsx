@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import lobby from "@/assets/img/lobby.jpg";
+import lobby from "@/assets/img/lobby.jpg?inline";
 import { Award, Handshake, Sparkles, ShieldCheck, Users2, Heart } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
@@ -13,6 +13,7 @@ export const Route = createFileRoute("/about")({
       { property: "og:title", content: "About HK Provision" },
       { property: "og:description", content: "Our story, mission, vision and the core values driving HK Provision." },
       { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: About,
