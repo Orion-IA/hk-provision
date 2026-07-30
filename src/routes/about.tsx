@@ -61,7 +61,7 @@ function About() {
             </div>
           </Reveal>
           <Reveal variant="right" delay={150}>
-            <img src={lobby} alt="Hospitality" className="w-full h-[560px] object-cover rounded-sm" width={1600} height={1200} loading="lazy" />
+            <img src={lobby} alt="Hospitality" className="w-full h-[560px] object-cover rounded-sm" width={1600} height={1200} />
           </Reveal>
         </div>
       </section>

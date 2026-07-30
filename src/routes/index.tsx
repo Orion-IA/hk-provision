@@ -89,7 +89,7 @@ function Home() {
             </Link>
           </Reveal>
           <Reveal variant="right" delay={150} className="relative">
-            <img src={lobby} alt="Luxury hotel lobby" className="w-full h-[520px] object-cover rounded-sm" width={1600} height={1200} loading="lazy" />
+            <img src={lobby} alt="Luxury hotel lobby" className="w-full h-[520px] object-cover rounded-sm" width={1600} height={1200} />
             <div className="absolute -bottom-6 -left-6 bg-gold text-navy p-6 max-w-[220px] hidden md:block">
               <p className="font-serif text-3xl leading-none">GCC</p>
               <p className="mt-2 text-xs uppercase tracking-widest font-semibold">Regional reach & network</p>
