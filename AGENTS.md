@@ -1,10 +1,5 @@
-<!-- LOVABLE:BEGIN -->
-> [!IMPORTANT]
-> This project is connected to [Lovable](https://lovable.dev). Avoid rewriting
-> published git history — force pushing, or rebasing/amending/squashing commits
-> that are already pushed — as it rewrites history on Lovable's side and the
-> user will likely lose their project history.
->
-> Commits you push to the connected branch sync back to Lovable and show up in
-> the editor, so keep the branch in a working state.
-<!-- LOVABLE:END -->
+This project is deployed as a standalone TanStack Start Node.js application.
+
+- Use Node.js 22.12 or newer.
+- Run `npm ci` and `npm run build` for production builds.
+- Run the generated server with `npm start`; keep it behind Nginx and systemd.

@@ -6,10 +6,9 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -21,7 +20,9 @@ function NotFoundComponent() {
         <p className="mt-4 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
-        <a href="/" className="mt-8 inline-flex btn-gold">Return home</a>
+        <a href="/" className="mt-8 inline-flex btn-gold">
+          Return home
+        </a>
       </div>
     </div>
   );
@@ -30,9 +31,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -41,8 +39,21 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         <span className="gold-rule mt-4" />
         <p className="mt-4 text-sm text-muted-foreground">Please try again or head back home.</p>
         <div className="mt-6 flex justify-center gap-3">
-          <button onClick={() => { router.invalidate(); reset(); }} className="btn-gold">Try again</button>
-          <a href="/" className="inline-flex items-center px-6 py-3 text-sm border border-navy text-navy uppercase tracking-wider">Go home</a>
+          <button
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
+            className="btn-gold"
+          >
+            Try again
+          </button>
+          <a
+            href="/"
+            className="inline-flex items-center px-6 py-3 text-sm border border-navy text-navy uppercase tracking-wider"
+          >
+            Go home
+          </a>
         </div>
       </div>
     </div>
@@ -55,10 +66,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "HK Provision | Hospitality Solutions" },
-      { name: "description", content: "Saudi-based hospitality solutions: hotel supply, consultancy, events management and asset management across the GCC." },
+      {
+        name: "description",
+        content:
+          "Saudi-based hospitality solutions: hotel supply, consultancy, events management and asset management across the GCC.",
+      },
       { name: "author", content: "HK Provision" },
       { property: "og:title", content: "HK Provision | Hospitality Solutions" },
-      { property: "og:description", content: "Premium hotel supply, consultancy, events and asset management for hotels, restaurants and investors across Saudi Arabia and the GCC." },
+      {
+        property: "og:description",
+        content:
+          "Premium hotel supply, consultancy, events and asset management for hotels, restaurants and investors across Saudi Arabia and the GCC.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -66,7 +85,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap",
+      },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
   }),
