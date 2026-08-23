@@ -6,7 +6,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=/var/www/hk-provision
+WorkingDirectory=/hk-provision
 ExecStart=/usr/bin/docker compose up --build --remove-orphans
 ExecStop=/usr/bin/docker compose down
 Restart=on-failure

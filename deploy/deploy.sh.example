@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-APP_DIR=/var/www/hk-provision
+APP_DIR=/hk-provision
 REPO_URL="${REPO_URL:?Set REPO_URL to the Git repository URL}"
 
 if [[ ! -d "$APP_DIR/.git" ]]; then

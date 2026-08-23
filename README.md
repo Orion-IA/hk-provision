@@ -23,7 +23,7 @@ Open `http://127.0.0.1:3000`.
 ## Ubuntu VPS deployment with Docker
 
 The files in `deploy/` assume Ubuntu 22.04/24.04, the app at
-`/var/www/hk-provision`, and the domain `example.com`. Replace both values
+`/hk-provision`, and the domain `example.com`. Replace both values
 before running commands.
 
 1. Point the domain's `A` records at the VPS address. Allow SSH, HTTP, and
@@ -55,10 +55,10 @@ before running commands.
    authentication method if the repository is private:
 
    ```sh
-   sudo mkdir -p /var/www
-   sudo chown "$USER":"$USER" /var/www
-   git clone YOUR_REPOSITORY_URL /var/www/hk-provision
-   cd /var/www/hk-provision
+   sudo mkdir -p /hk-provision
+   sudo chown "$USER":"$USER" /hk-provision
+   git clone YOUR_REPOSITORY_URL /hk-provision
+   cd /hk-provision
    docker compose build
    ```
 
@@ -117,7 +117,7 @@ before running commands.
 After pushing a tested change:
 
 ```sh
-cd /var/www/hk-provision
+cd /hk-provision
 git pull --ff-only
 docker compose up -d --build --remove-orphans
 docker compose ps
