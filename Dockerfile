@@ -4,11 +4,13 @@ FROM node:22-bookworm-slim AS build
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-# The lockfile is generated on Windows, so it only records the win32 native
-# binding for rolldown (Vite's bundler). npm ci won't install the Linux one,
-# so add it explicitly here (npm bug #4828 with cross-platform optional deps).
-RUN npm ci \
- && npm install --no-save @rolldown/binding-linux-x64-gnu@1.2.5
+# The lockfile is generated on Windows, so it only records win32 native
+# bindings for packages like rolldown, lightningcss and @tailwindcss/oxide.
+# npm honors those wrong-platform entries and never installs the Linux
+# binaries (npm bug #4828). The documented workaround is to drop the
+# lockfile and install fresh so npm resolves the correct Linux binaries.
+RUN rm -f package-lock.json \
+ && npm install --include=optional --no-audit --no-fund
 
 COPY . .
 RUN npm run build
