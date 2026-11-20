@@ -5,7 +5,15 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [tanstackStart(), viteReact(), tailwindcss(), nitro({ preset: "node-server" })],
+  plugins: [
+    tanstackStart(),
+    viteReact(),
+    tailwindcss(),
+    nitro({
+      preset: process.env.VERCEL ? "vercel" : "node-server",
+      vercel: { functions: { runtime: "nodejs22.x" } },
+    }),
+  ],
   resolve: {
     tsconfigPaths: true,
   },
