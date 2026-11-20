@@ -34,7 +34,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm">
             <li className="flex items-start gap-2"><MapPin size={16} className="text-gold mt-0.5" /> Riyadh, Saudi Arabia</li>
             <li className="flex items-start gap-2"><Phone size={16} className="text-gold mt-0.5" /> <a href="tel:+966567567063" className="hover:text-gold">+966 567 567 063</a></li>
-            <li className="flex items-start gap-2"><Mail size={16} className="text-gold mt-0.5" /> <a href="mailto:info@hkprovision.com" className="hover:text-gold">info@hkprovision.com</a></li>
+            <li className="flex items-start gap-2"><Mail size={16} className="text-gold mt-0.5" /> <a href="mailto:info@hk-provision.com" className="hover:text-gold">info@hk-provision.com</a></li>
           </ul>
         </div>
       </div>

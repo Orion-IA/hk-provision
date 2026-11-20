@@ -35,7 +35,7 @@ function Contact() {
               { icon: MapPin, label: "Location", value: "Riyadh, Saudi Arabia", href: null },
               { icon: Phone, label: "Phone", value: "+966 567 567 063", href: "tel:+966567567063" },
               { icon: MessageCircle, label: "WhatsApp", value: "+966 567 567 063", href: "https://wa.me/966567567063" },
-              { icon: Mail, label: "Email", value: "info@hkprovision.com", href: "mailto:info@hkprovision.com" },
+              { icon: Mail, label: "Email", value: "info@hk-provision.com", href: "mailto:info@hk-provision.com" },
             ].map((c, idx) => (
               <Reveal key={c.label} variant="left" delay={idx * 100} className="flex gap-5 items-start border-b border-border pb-6">
                 <div className="p-3 bg-cream">

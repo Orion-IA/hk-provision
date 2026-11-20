@@ -270,7 +270,7 @@ function Home() {
               <div className="mt-6 flex flex-wrap gap-6 text-sm text-navy">
                 <span className="flex items-center gap-2"><MapPin className="text-gold" size={16} /> Riyadh, KSA</span>
                 <span className="flex items-center gap-2"><Phone className="text-gold" size={16} /> +966 567 567 063</span>
-                <span className="flex items-center gap-2"><Mail className="text-gold" size={16} /> info@hkprovision.com</span>
+                <span className="flex items-center gap-2"><Mail className="text-gold" size={16} /> info@hk-provision.com</span>
               </div>
             </div>
             <div className="flex md:justify-end">
