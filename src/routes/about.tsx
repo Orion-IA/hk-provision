@@ -1,20 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
+import { seo } from "@/lib/seo";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import lobby from "@/assets/img/lobby.jpg?inline";
+import lobby from "@/assets/img/lobby.jpg";
 import { Award, Handshake, Sparkles, ShieldCheck, Users2, Heart } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About Us | HK Provision Hospitality Solutions" },
-      { name: "description", content: "Decades of international hospitality expertise combined with a reliable supplier network across Saudi Arabia and the GCC." },
-      { property: "og:title", content: "About HK Provision" },
-      { property: "og:description", content: "Our story, mission, vision and the core values driving HK Provision." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
+  head: () => seo({
+    title: "About HK Provision | Hospitality Experts in Saudi Arabia",
+    description:
+      "Decades of international hospitality expertise combined with a trusted supplier network. Discover the story, mission and values behind HK Provision in Riyadh.",
+    path: "/about",
   }),
   component: About,
 });
@@ -61,7 +58,7 @@ function About() {
             </div>
           </Reveal>
           <Reveal variant="right" delay={150}>
-            <img src={lobby} alt="Hospitality" className="w-full h-[560px] object-cover rounded-sm" width={1600} height={1200} />
+            <img src={lobby} alt="Elegant hotel lobby representing HK Provision hospitality projects" loading="lazy" decoding="async" className="w-full h-[560px] object-cover rounded-sm" width={1600} height={1200} />
           </Reveal>
         </div>
       </section>

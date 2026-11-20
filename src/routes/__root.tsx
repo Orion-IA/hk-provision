@@ -9,10 +9,12 @@ import {
 import { type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { SITE_NAME, organizationJsonLd } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
+      <meta name="robots" content="noindex" />
       <div className="max-w-md text-center">
         <p className="eyebrow">Error 404</p>
         <h1 className="mt-4 font-serif text-5xl text-navy">Page not found</h1>
@@ -72,14 +74,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Saudi-based hospitality solutions: hotel supply, consultancy, events management and asset management across the GCC.",
       },
       { name: "author", content: "HK Provision" },
-      { property: "og:title", content: "HK Provision | Hospitality Solutions" },
-      {
-        property: "og:description",
-        content:
-          "Premium hotel supply, consultancy, events and asset management for hotels, restaurants and investors across Saudi Arabia and the GCC.",
-      },
+      { name: "theme-color", content: "#0E2A47" },
+      { property: "og:site_name", content: SITE_NAME },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { "script:ld+json": organizationJsonLd },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -89,7 +88,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: "/favicon.png", type: "image/jpeg" },
+      { rel: "apple-touch-icon", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,

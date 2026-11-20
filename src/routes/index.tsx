@@ -1,20 +1,17 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
+import { seo } from "@/lib/seo";
 import { Reveal } from "@/components/site/Reveal";
-import hero from "@/assets/img/riyadh-hero.jpg?inline";
-import lobby from "@/assets/img/lobby.jpg?inline";
+import hero from "@/assets/img/riyadh-hero.jpg";
+import lobby from "@/assets/img/lobby.jpg";
 import { Building2, Users, CalendarRange, LineChart, ArrowRight, CheckCircle2, MapPin, Phone, Mail, Compass, ClipboardList, Handshake, Sparkles, Quote, Globe2 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "HK Provision — Hospitality Solutions. Delivered." },
-      { name: "description", content: "Premium hotel supply, hospitality consultancy, events and asset management from Riyadh, serving the Kingdom and the GCC." },
-      { property: "og:title", content: "HK Provision — Hospitality Solutions. Delivered." },
-      { property: "og:description", content: "Trusted hospitality partner from concept to execution — supply, consultancy, events and asset management." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
+  head: () => seo({
+    title: "HK Provision | Hotel Supply & Hospitality Solutions in Riyadh, Saudi Arabia",
+    description:
+      "HK Provision delivers premium hotel supply, hospitality consultancy, events and asset management from Riyadh — serving hotels, restaurants and investors across Saudi Arabia and the GCC.",
+    path: "/",
   }),
   component: Home,
 });
@@ -37,6 +34,7 @@ function Home() {
           className="absolute inset-0 h-full w-full object-cover animate-hero-ken"
           width={1920}
           height={1080}
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-deep/95 via-navy/80 to-navy/40" />
         <div className="absolute inset-y-0 left-0 w-1 bg-gold hidden md:block" />
@@ -89,7 +87,7 @@ function Home() {
             </Link>
           </Reveal>
           <Reveal variant="right" delay={150} className="relative">
-            <img src={lobby} alt="Luxury hotel lobby" className="w-full h-[520px] object-cover rounded-sm" width={1600} height={1200} />
+            <img src={lobby} alt="Luxury hotel lobby furnished and supplied to five-star standards" loading="lazy" decoding="async" className="w-full h-[520px] object-cover rounded-sm" width={1600} height={1200} />
             <div className="absolute -bottom-6 -left-6 bg-gold text-navy p-6 max-w-[220px] hidden md:block">
               <p className="font-serif text-3xl leading-none">GCC</p>
               <p className="mt-2 text-xs uppercase tracking-widest font-semibold">Regional reach & network</p>

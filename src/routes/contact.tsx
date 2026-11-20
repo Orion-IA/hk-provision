@@ -1,19 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
+import { seo } from "@/lib/seo";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Mail, Phone, MapPin, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact | HK Provision Hospitality Solutions" },
-      { name: "description", content: "Contact HK Provision in Riyadh — phone, email, WhatsApp. Let's discuss your hospitality project." },
-      { property: "og:title", content: "Contact HK Provision" },
-      { property: "og:description", content: "Reach the HK Provision team in Riyadh to discuss supply, consultancy, events or asset management." },
-      { property: "og:type", content: "website" },
-    ],
+  head: () => seo({
+    title: "Contact HK Provision | Hospitality Solutions in Riyadh",
+    description:
+      "Contact HK Provision in Riyadh by phone, email or WhatsApp to discuss hotel supply, consultancy, events or asset management for your hospitality project.",
+    path: "/contact",
   }),
   component: Contact,
 });

@@ -1,18 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
+import { seo } from "@/lib/seo";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: "Projects | HK Provision Hospitality Solutions" },
-      { name: "description", content: "Selected hospitality projects and partnerships — coming soon." },
-      { property: "og:title", content: "Projects — HK Provision" },
-      { property: "og:description", content: "A curated portfolio of hospitality projects across the GCC. Coming soon." },
-      { property: "og:type", content: "website" },
-    ],
+  head: () => seo({
+    title: "Hospitality Projects & Portfolio | HK Provision",
+    description:
+      "A curated portfolio of hotel, restaurant and hospitality investment projects delivered by HK Provision across Saudi Arabia and the GCC.",
+    path: "/projects",
   }),
   component: Projects,
 });

@@ -1,18 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
+import { seo } from "@/lib/seo";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Building2, Users, CalendarRange, LineChart, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Services | HK Provision Hospitality Solutions" },
-      { name: "description", content: "Hotel supply, hospitality consultancy, events management and asset management — one integrated partner." },
-      { property: "og:title", content: "Our Services — HK Provision" },
-      { property: "og:description", content: "Explore the four pillars of HK Provision: Supply, Consultancy, Events and Asset Management." },
-      { property: "og:type", content: "website" },
-    ],
+  head: () => seo({
+    title: "Hotel Supply, Consultancy, Events & Asset Management | HK Provision",
+    description:
+      "One integrated hospitality partner in Saudi Arabia: OS&E and FF&E hotel supply, operational consultancy and pre-opening, events management and hotel asset management.",
+    path: "/services",
   }),
   component: Services,
 });
