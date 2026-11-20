@@ -1,6 +1,6 @@
 // Canonical origin used for canonical URLs, Open Graph, sitemap and robots.
 // Override at build time with VITE_SITE_URL (no trailing slash).
-export const SITE_URL = (import.meta.env.VITE_SITE_URL || "https://hkprovision.com").replace(/\/+$/, "");
+export const SITE_URL = (import.meta.env.VITE_SITE_URL || "https://www.hk-provision.com").replace(/\/+$/, "");
 
 export const SITE_NAME = "HK Provision";
 export const DEFAULT_OG_IMAGE = "/og-image.jpg";
