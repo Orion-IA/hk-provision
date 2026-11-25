@@ -65,7 +65,7 @@ export const organizationJsonLd = {
       name: SITE_NAME,
       legalName: "HK Provision Hospitality Solutions",
       url: SITE_URL,
-      logo: absoluteUrl("/favicon.png"),
+      logo: absoluteUrl("/logo.png"),
       email: CONTACT.email,
       telephone: CONTACT.phone,
       slogan: "Supplying Excellence. Creating Hospitality.",

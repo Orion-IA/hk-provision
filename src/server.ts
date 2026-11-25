@@ -2,6 +2,7 @@ import "./lib/error-capture";
 
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
+import { SITE_URL } from "./lib/seo";
 
 type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
@@ -44,12 +45,43 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+const CANONICAL = new URL(SITE_URL);
+
+// One URL per page: the production *.vercel.app alias moves to the canonical host, and "/about/" to "/about".
+// Both are permanent (308) so search engines merge the signals. Preview deployments are left alone.
+function canonicalRedirect(request: Request): Response | null {
+  const url = new URL(request.url);
+  const host = request.headers.get("x-forwarded-host") ?? url.host;
+  const offHost = process.env.VERCEL_ENV === "production" && host.endsWith(".vercel.app");
+  const trailingSlash = url.pathname.length > 1 && url.pathname.endsWith("/");
+  if (!offHost && !trailingSlash) return null;
+
+  const target = new URL(url.pathname.replace(/\/+$/, "") || "/", offHost ? CANONICAL : url);
+  target.search = url.search;
+  return new Response(null, { status: 308, headers: { Location: target.href } });
+}
+
+const SECURITY_HEADERS: Record<string, string> = {
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "X-Frame-Options": "SAMEORIGIN",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+};
+
+function withSecurityHeaders(response: Response): Response {
+  const res = new Response(response.body, response);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) res.headers.set(k, v);
+  return res;
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const redirect = canonicalRedirect(request);
+    if (redirect) return redirect;
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
-      return await normalizeCatastrophicSsrResponse(response);
+      return withSecurityHeaders(await normalizeCatastrophicSsrResponse(response));
     } catch (error) {
       console.error(error);
       return new Response(renderErrorPage(), {
