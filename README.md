@@ -133,3 +133,17 @@ sudo journalctl -u hk-provision -f
 
 Never commit private keys, passwords, or `.env` files. This site currently has
 no required runtime secrets; `.env.example` is provided for future use.
+
+## Contact form email
+
+The contact form (`src/routes/contact.tsx`) calls a server function (`src/lib/contact.ts`) that sends mail
+through Resend's SMTP relay (`src/server/mailer.ts`, nodemailer). The domain `hk-provision.com` is verified
+in Resend, so the site sends as `no-reply@hk-provision.com` with a Resend API key and never uses the
+mailbox password (it can change freely).
+
+- **Local:** copy `.env.example` to `.env.local` and put the Resend API key in `SMTP_PASS`.
+- **Vercel:** the same `SMTP_*` / `MAIL_*` variables are set for Production and Preview; changes apply on the next deploy.
+
+Enquiries arrive at `MAIL_TO` (hakim.karoui@hk-provision.com) with the visitor as Reply-To. With
+`MAIL_SEND_CONFIRMATION=true` the visitor also gets an acknowledgement whose replies go to `MAIL_REPLY_TO`.
+Failures are logged with the `[contact]` prefix (`vercel logs`), and every send is visible in the Resend dashboard.

@@ -4,7 +4,8 @@ import { seo } from "@/lib/seo";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { Mail, Phone, MapPin, MessageCircle, Send } from "lucide-react";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
+import { INTERESTS, sendContact } from "@/lib/contact";
 
 export const Route = createFileRoute("/contact")({
   head: () => seo({
@@ -17,7 +18,20 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "failed">("idle");
+
+  async function submit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const f = Object.fromEntries(new FormData(e.currentTarget)) as Record<string, string>;
+    setStatus("sending");
+    try {
+      await sendContact({ data: f });
+      setStatus("sent");
+    } catch {
+      setStatus("failed");
+    }
+  }
+
   return (
     <SiteLayout>
       <PageHero eyebrow="Contact" title="Let's build something remarkable." subtitle="Speak with our team about your next hospitality project — we respond within one business day." />
@@ -54,7 +68,7 @@ function Contact() {
           </div>
 
           <Reveal variant="right" delay={100} className="lg:col-span-3 bg-cream p-10 block">
-            {sent ? (
+            {status === "sent" ? (
               <div className="text-center py-16">
                 <div className="mx-auto w-14 h-14 bg-gold flex items-center justify-center rounded-full">
                   <Send className="text-navy" />
@@ -63,10 +77,7 @@ function Contact() {
                 <p className="mt-3 text-muted-foreground">We've received your message and will reply within one business day.</p>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-                className="space-y-5"
-              >
+              <form onSubmit={submit} className="space-y-5">
                 <p className="eyebrow">Send us a message</p>
                 <h3 className="font-serif text-3xl text-navy">Tell us about your project</h3>
                 <span className="gold-rule" />
@@ -80,23 +91,29 @@ function Contact() {
 
                 <div>
                   <label className="text-xs uppercase tracking-widest text-navy font-semibold">Interested in</label>
-                  <select className="mt-2 w-full bg-white border border-border px-4 py-3 text-navy focus:outline-none focus:border-gold">
-                    <option>Hotel Supply</option>
-                    <option>Hospitality Consultancy</option>
-                    <option>Events Management</option>
-                    <option>Asset Management</option>
-                    <option>Other</option>
+                  <select name="interest" className="mt-2 w-full bg-white border border-border px-4 py-3 text-navy focus:outline-none focus:border-gold">
+                    {INTERESTS.map((i) => <option key={i}>{i}</option>)}
                   </select>
                 </div>
 
                 <div>
                   <label className="text-xs uppercase tracking-widest text-navy font-semibold">Message</label>
-                  <textarea rows={5} required className="mt-2 w-full bg-white border border-border px-4 py-3 text-navy focus:outline-none focus:border-gold" />
+                  <textarea name="message" rows={5} required maxLength={4000} className="mt-2 w-full bg-white border border-border px-4 py-3 text-navy focus:outline-none focus:border-gold" />
                 </div>
 
-                <button type="submit" className="btn-gold w-full sm:w-auto">
-                  Send message <Send size={16} />
+                {/* Honeypot: hidden from people, bots fill it in. */}
+                <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
+
+                <button type="submit" disabled={status === "sending"} className="btn-gold w-full sm:w-auto disabled:opacity-60">
+                  {status === "sending" ? "Sending…" : "Send message"} <Send size={16} />
                 </button>
+
+                {status === "failed" && (
+                  <p role="alert" className="text-sm text-red-700">
+                    Sorry, your message couldn't be sent. Please try again, or email us at{" "}
+                    <a href="mailto:info@hk-provision.com" className="underline">info@hk-provision.com</a>.
+                  </p>
+                )}
               </form>
             )}
           </Reveal>
